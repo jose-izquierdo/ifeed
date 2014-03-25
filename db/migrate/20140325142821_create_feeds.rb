@@ -2,7 +2,8 @@ class CreateFeeds < ActiveRecord::Migration
   def change
     create_table :feeds do |t|
       t.string :name
-      t.text :description
+      t.string :category
+      t.string :description
 
       t.timestamps
     end
