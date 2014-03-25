@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'feedjira'
 
-group :development, :test 
+group :development, :test do
 gem 'rspec-rails'
 end
 
