@@ -1,6 +1,6 @@
 Ifeed::Application.routes.draw do
-  get "git/add"
-  get "git/."
+  get '/' => 'feeds#index'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
