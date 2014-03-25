@@ -33,6 +33,8 @@ gem 'devise'
 
 gem 'whenever', :require => false
 
+gem 'foundation-rails'
+
 group :development, :test do
 gem 'rspec-rails'
 end
