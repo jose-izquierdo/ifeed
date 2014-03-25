@@ -31,6 +31,8 @@ gem 'feedjira'
 
 gem 'devise'
 
+gem 'whenever', :require => false
+
 group :development, :test do
 gem 'rspec-rails'
 end
