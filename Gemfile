@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'feedjira'
 
+gem 'devise'
+
 group :development, :test do
 gem 'rspec-rails'
 end
