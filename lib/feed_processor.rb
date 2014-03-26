@@ -1,0 +1,31 @@
+class FeedProcessor
+
+	def self.fetch_and_parse
+		Feed.find_each do |feed|
+			self.process_feed(feed)
+		end
+	end	
+
+
+	def self.process_feed(feed)
+		result = Feedjira::Feed.fetch_and_parse feed.url
+		self.create_feed_items(feed, result.entries)
+	end
+
+	def self.create_feed_items(feed, entries)
+
+		entries.each do |entry|
+			feed = Feed_item.create(name: entry[:name], summary: entry[:summary], url: entry[:url], published_at: entry[:published])
+			if feed.published_at > entry[:published]
+				#feed.save
+			end
+		end
+
+		# Ver fecha ultimo elemento del feed item
+		# iterar sobre cada elemento de parse
+		# en cada elemento guardar si fecha mayor ultima guardada
+		# Borrar elementos antiguos
+	end	
+
+
+end

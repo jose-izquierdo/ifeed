@@ -11,21 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325154332) do
+ActiveRecord::Schema.define(version: 20140326164936) do
 
-  create_table "feed_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "feed_id"
+  create_table "categories", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "feeds", force: true do |t|
-    t.string   "name"
-    t.string   "category"
+    t.string   "name",        null: false
+    t.integer  "category_id"
     t.string   "description"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["category_id"], :name => "fk__feeds_category_id"
+    t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_feeds_category_id"
+  end
+
+  create_table "feed_items", force: true do |t|
+    t.string   "name"
+    t.string   "summary",      limit: 1000
+    t.string   "url"
+    t.date     "published_at"
+    t.integer  "feed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["feed_id"], :name => "fk__feed_items_feed_id"
+    t.foreign_key ["feed_id"], "feeds", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_feed_items_feed_id"
   end
 
   create_table "users", force: true do |t|
@@ -41,9 +56,19 @@ ActiveRecord::Schema.define(version: 20140325154332) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], :name => "index_users_on_email", :unique => true
+    t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table "feed_users", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "feed_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["feed_id"], :name => "fk__feed_users_feed_id"
+    t.index ["user_id"], :name => "fk__feed_users_user_id"
+    t.foreign_key ["feed_id"], "feeds", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_feed_users_feed_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_feed_users_user_id"
+  end
 
 end

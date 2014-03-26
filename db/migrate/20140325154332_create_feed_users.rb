@@ -1,8 +1,8 @@
 class CreateFeedUsers < ActiveRecord::Migration
   def change
     create_table :feed_users do |t|
-    	t.integer :user_id
-    	t.integer :feed_id
+    	t.references :user, null: false
+    	t.references :feed, null: false
 
       t.timestamps
     end

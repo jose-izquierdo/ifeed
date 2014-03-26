@@ -34,6 +34,9 @@ gem 'devise'
 gem 'whenever', :require => false
 
 gem 'foundation-rails'
+gem "schema_plus"
+
+gem 'annotate', group: :development
 
 group :development, :test do
 gem 'rspec-rails'
