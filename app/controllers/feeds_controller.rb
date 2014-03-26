@@ -14,6 +14,10 @@ class FeedsController < ApplicationController
 		#Creating sports feeds from ESPN, Yahoo Sports & Sport Illustrated
 		sport_urls = %w[http://sports.espn.go.com/espn/rss/news http://sports.yahoo.com/top/rss.xml http://rss.cnn.com/rss/si_topstories.rss]
 		sport_feeds = Feedjira::Feed.fetch_raw sport_urls
+
+		#Creating business feed from Inc, WSJ & The Economist
+		business_urls = %w[http://feeds.inc.com/home/updates?format=xml http://online.wsj.com/xml/rss/3_7014.xml http://www.economist.com/feeds/print-sections/77/business.xml] 
+		business_feeds = Feedjira::Feed.fetch_raw sport_urls
 	end
 
 	def edit
