@@ -9,6 +9,11 @@ class FeedsController < ApplicationController
 
 		#Creating home page feeds from NYT, LAT & BBC
 		hp_urls = %w[http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml http://feeds.latimes.com/latimes/news http://feeds.bbci.co.uk/news/rss.xml?edition=uk]
+		hp_feeds = Feedjira::Feed.fetch_raw hp_urls
+
+		#Creating sports feeds from ESPN, Yahoo Sports & Sport Illustrated
+		sport_urls = %w[http://sports.espn.go.com/espn/rss/news http://sports.yahoo.com/top/rss.xml http://rss.cnn.com/rss/si_topstories.rss]
+		sport_feeds = Feedjira::Feed.fetch_raw sport_urls
 	end
 
 	def edit
