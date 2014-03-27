@@ -2,13 +2,23 @@
 <br>
 <div class = "menu_list">
 	<ul>
-	<p> Choose a Category </p>
+	<h3> Choose a Category </h3>
 	<br>
 	
 		<li><a href="#" class="button [radius round]">Technology</a></li>
 		<li><a href="#" class="button [radius round]">Top News </a></li>
 		<li><a href="#" class="button [radius round]">Sports</a></li>
 		<li><a href="#" class="button [radius round]">Business</a></li>
+<div>
+	<ul>
+		
+ 		<% @feeds.each do |feed| %>
+ 			<li> 
+ 				
+		 		<%= feed.url%>
+		 		<br>
+		 	</li>
+ 		<%end%>
 	
 	</ul>	
 </div>

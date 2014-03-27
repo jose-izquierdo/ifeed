@@ -1,6 +1,8 @@
 class FeedsController < ApplicationController
 	def index
+		@feeds = FeedItem.limit(10)
 	end
+
 	def create
 
 		#Creating tech feeds from NYT, LAT & 
