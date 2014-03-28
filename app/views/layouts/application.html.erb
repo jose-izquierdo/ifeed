@@ -34,9 +34,7 @@
       <div class = "right_side">            
               <li>
                 <% @feeds.each do |feed| %>
-
-                    <%new_summary = feed.summary%>  
-                    <%= new_summary[0.. 140]%>...
+                    <%=truncate(feed.summary, :length => 140)%>
                     <br>
                     <%= feed.published_at%>
                     <div class="links"> <a href = "feed.url"><%= feed.url%></a> </div>        
