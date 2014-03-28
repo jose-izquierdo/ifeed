@@ -36,7 +36,7 @@
                 <% @feeds.each do |feed| %>
                     <%=truncate(feed.summary, :length => 140)%>
                     <br>
-                    <%= feed.published_at%>
+                    <%= feed.published_at%><br>
                     <div class="links"> <a href = "feed.url"><%= feed.url%></a> </div>        
                     <hr>
                 <%end%>   
