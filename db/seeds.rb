@@ -8,6 +8,8 @@
 
 tech = Category.create(name: 'Tech')
 sports = Category.create(name: 'Sports')
+news = Category.create(name: 'News')
+business = Category.create(name: 'Business')
 
 tech_feeds = [
 	{ name: 'NYTimes', url: 'http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml' },
@@ -19,3 +21,20 @@ tech_feeds.each do |feed|
 	Feed.create(name: feed[:name], url: feed[:url], category: tech)
 end
 
+sport_feeds = [
+	{name: 'Espn', url: 'http://sports.espn.go.com/espn/rss/news'},
+	{name: 'Yahoo', url: 'http://sports.yahoo.com/top/rss.xml'},
+	{name: 'Cnn', url: 'http://rss.cnn.com/rss/si_topstories.rss'}
+]
+
+news_feeds = [
+	{name: 'NYTimes', url: 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'},
+	{name: 'LATimes', url: 'http://feeds.latimes.com/latimes/news'},
+	{name: 'BBC', url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk'}
+]
+
+business_feeds = [
+	{name: 'Inc', url: 'http://feeds.inc.com/home/updates?format=xml'},
+	{name: 'Wsj', url: 'http://online.wsj.com/xml/rss/3_7014.xml'},
+	{name: 'Economist', url: 'http://www.economist.com/feeds/print-sections/77/business.xml'}
+]
