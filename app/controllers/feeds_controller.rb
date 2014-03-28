@@ -1,6 +1,6 @@
 class FeedsController < ApplicationController
 	def index
-		@feeds = FeedItem.limit(10)
+		@feeds = FeedItem.limit(5)
 	end
 
 	def create

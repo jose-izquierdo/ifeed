@@ -21,8 +21,15 @@
 }
 
 .right_side{
-	margin-top: 90px;
+	margin-top: 85px;
+	font-size: 13px;
+	font-family: serif;
 }
 .right_side li{
 	list-style:none;	
+}
+hr { 
+  background-color: orange;
+  height: 20px;
+  width: 80%;
 }

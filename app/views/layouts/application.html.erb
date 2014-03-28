@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -14,8 +15,9 @@
   <body>
   <%= render partial: 'top_bar'%>
     <%= yield %>
+    
 
-    <div class="sidebar large-4 columns left">
+    <div class="sidebar large-3 columns left">
             <ul class="side-nav">
                 
                 <h3> Choose a Category </h3>
@@ -29,10 +31,13 @@
             </ul>
     </div>
 
-    <div class="large-8 columns right">
+    <div class="large-9 columns right">
       <div class = "right_side">
         <% @feeds.each do |feed| %>
           <li> 
+            <%new_summary = feed.summary%>  
+            <%= new_summary[0.. 140]%>...
+            <br>
             <%= feed.published_at%>
             <hr>
           </li>
@@ -42,5 +47,5 @@
 
     <%= javascript_include_tag "application" %>
   </body>
-  
+ 
 </html>
