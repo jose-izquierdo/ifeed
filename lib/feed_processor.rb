@@ -14,7 +14,7 @@ class FeedProcessor
 
 	def self.create_feed_items(feed, entries)
 
-		last_entry = feed.feed_items.order('published_at desc').first
+		last_entry = feed.feed_items.order('published_at asc').first
 		entries.each do |entry|
 			if (last_entry.nil? || last_entry.published_at < entry[:published])
 				FeedItem.create(name: entry[:name], summary: entry[:summary], url: entry[:url], published_at: entry[:published])

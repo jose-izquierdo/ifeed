@@ -1,7 +1,10 @@
 class FeedsController < ApplicationController
 	def index
-		@feeds = FeedItem.limit(5)
+		@feed = Feed.all
+		@feeds = FeedItem.all
 	end
+
+	
 
 	def create
 

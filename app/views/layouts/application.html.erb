@@ -31,19 +31,18 @@
     </div>
 
     <div class="large-9 columns right">
-      <div class = "right_side">
-      <%require 'uri'%>
-        <% @feeds.each do |feed| %>
-          <li> 
-            <%new_summary = feed.summary%>  
-            <%= new_summary[0.. 140]%>...
-            <br>
-            <%= feed.published_at%>
-            <div class="links"> <a href = "feed.url"><%= feed.url%></a> </div>
-            
-            <hr>
-          </li>
-        <%end%>
+      <div class = "right_side">            
+              <li>
+                <% @feeds.each do |feed| %>
+
+                    <%new_summary = feed.summary%>  
+                    <%= new_summary[0.. 140]%>...
+                    <br>
+                    <%= feed.published_at%>
+                    <div class="links"> <a href = "feed.url"><%= feed.url%></a> </div>        
+                    <hr>
+                <%end%>   
+              </li>
       </div>
     </div>
 
