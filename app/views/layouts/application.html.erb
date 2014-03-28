@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -33,12 +32,15 @@
 
     <div class="large-9 columns right">
       <div class = "right_side">
+      <%require 'uri'%>
         <% @feeds.each do |feed| %>
           <li> 
             <%new_summary = feed.summary%>  
             <%= new_summary[0.. 140]%>...
             <br>
             <%= feed.published_at%>
+            <div class="links"> <a href = "feed.url"><%= feed.url%></a> </div>
+            
             <hr>
           </li>
         <%end%>

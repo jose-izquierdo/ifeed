@@ -28,8 +28,13 @@
 .right_side li{
 	list-style:none;	
 }
+
 hr { 
   background-color: orange;
   height: 20px;
   width: 80%;
+}
+
+.links{
+	font-size: 8px
 }
