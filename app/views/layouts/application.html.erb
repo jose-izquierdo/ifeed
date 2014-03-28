@@ -14,6 +14,33 @@
   <body>
   <%= render partial: 'top_bar'%>
     <%= yield %>
+
+    <div class="sidebar large-4 columns left">
+            <ul class="side-nav">
+                
+                <h3> Choose a Category </h3>
+                <br>
+                
+                  <li><a href="#" class="button [radius round]">Technology</a></li>
+                  <li><a href="#" class="button [radius round]">Top News </a></li>
+                  <li><a href="#" class="button [radius round]">Sports</a></li>
+                  <li><a href="#" class="button [radius round]">Business</a></li>
+              
+            </ul>
+    </div>
+
+    <div class="large-8 columns right">
+      <div class = "right_side">
+        <% @feeds.each do |feed| %>
+          <li> 
+            <%= feed.published_at%>
+            <br>
+          </li>
+        <%end%>
+      </div>
+    </div>
+
     <%= javascript_include_tag "application" %>
   </body>
+  
 </html>

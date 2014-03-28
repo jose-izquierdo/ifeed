@@ -12,4 +12,17 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+.content.row {
+    margin-top: 20px;
+}
 
+.content.row .sidebar {
+    padding-top: 20px;
+}
+
+.right_side{
+	margin-top: 90px;
+}
+.right_side li{
+	style:none;	
+}
