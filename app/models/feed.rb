@@ -21,4 +21,8 @@ class Feed < ActiveRecord::Base
 	has_many :feed_items
 	belongs_to :category
 	validates :name, presence: true
+
+	scope :for_today, ->() {
+    	where(["DATE(start_at) <= DATE(?) AND DATE(?) <= DATE(end_at)", Date.today, Date.today])
+ 	}
 end

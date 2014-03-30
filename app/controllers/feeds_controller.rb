@@ -1,13 +1,16 @@
 class FeedsController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
 	def index
-		@feed = Feed.all
-		@feeds = FeedItem.all
+		@feed = Feed.for_today
+		@feeds = FeedItem.for_today
 	end
 
 	
 
 	def create
-
+		
+=begin
 		#Creating tech feeds from NYT, LAT & 
 		tech_urls = %w[http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml http://feeds.feedburner.com/latimes/technology http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk]
 		tech_feeds = Feedjira::Feed.fetch_and_parse tech_urls
@@ -23,6 +26,7 @@ class FeedsController < ApplicationController
 		#Creating business feed from Inc, WSJ & The Economist
 		business_urls = %w[http://feeds.inc.com/home/updates?format=xml http://online.wsj.com/xml/rss/3_7014.xml http://www.economist.com/feeds/print-sections/77/business.xml] 
 		business_feeds = Feedjira::Feed.fetch_an sport_urls
+=end
 	end
 
 	def edit

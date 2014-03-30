@@ -18,4 +18,8 @@
 
 class FeedItem < ActiveRecord::Base
 	belongs_to :feed 
+	scope :for_today, ->() {
+    	where(["DATE(published_at) <= DATE(?)", Date.today]).limit(5)
+  
+  	}
 end
