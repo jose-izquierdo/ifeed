@@ -37,7 +37,7 @@
                     <%=truncate(feed.summary, :length => 140)%>
                     <br>
                     <%= feed.published_at%><br>
-                    <div class="links"> <%=link_to feed.url, feed.url%></a> </div>        
+                    <div class="links"> <%=link_to "Continue reading this article", feed.url %></a> </div>        
                     <hr>
                 <%end%>   
               </li>
