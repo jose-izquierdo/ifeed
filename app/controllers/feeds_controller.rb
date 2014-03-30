@@ -2,7 +2,6 @@ class FeedsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
-		@feed = Feed.for_today
 		@feeds = FeedItem.for_today
 	end
 

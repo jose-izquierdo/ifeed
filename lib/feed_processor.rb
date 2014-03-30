@@ -14,7 +14,7 @@ class FeedProcessor
 
 	def self.create_feed_items(feed, entries)
 
-		last_entry = feed.feed_items.order('published_at asc').first
+		last_entry = feed.feed_items.order('published_at DESC').first
 		entries.each do |entry|
 			if (last_entry.nil? || last_entry.published_at < entry[:published])
 				FeedItem.create(name: entry[:name], summary: entry[:summary], url: entry[:url], published_at: entry[:published])
@@ -28,6 +28,10 @@ class FeedProcessor
 		# en cada elemento guardar si fecha mayor ultima guardada
 		# Borrar elementos antiguos
 	end	
+
+	def self.update_feed_items(feed)
+		updated_feeds = Feedjira::Feed.update(feed.values)
+	end
 
 
 end
