@@ -3,8 +3,8 @@
 # Table name: feed_items
 #
 #  id           :integer          not null, primary key
-#  name         :string(255)
-#  summary      :string(1000)
+#  title        :string(255)
+#  summary      :string(255)
 #  url          :string(255)
 #  published_at :date
 #  feed_id      :integer

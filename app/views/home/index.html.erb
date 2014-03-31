@@ -1,0 +1,14 @@
+<div class="sidebar large-3 columns left">
+
+  <ul class="side-nav">
+    <% @categories.each do |category| %>
+      <li><%= link_to category.name, root_path(category_id: category.id),  { class: 'button [radius round]' } %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="large-9 columns right">
+  <div class = "right_side">
+    <%= render partial: @category_id.blank? ? 'last' : 'by_category' %>
+  </div>
+</div>

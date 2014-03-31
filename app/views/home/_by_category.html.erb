@@ -1,0 +1,12 @@
+<h1> <%=@feed_items.first.first.feed_category_name%> news </h1>
+
+<% @feed_items.each do |feed| %>
+  <h2><%=feed.first.feed_title %></h2>
+  <% feed.each do |feed_item| %>
+    <h3><%=link_to feed_item.title, feed_item.url, target: 'blank' %></h3>
+    <b><%= feed_item.feed_category_name %></b> <%= feed_item.published_at%>
+    <br><br>
+    <%=truncate(feed_item.summary, length: 140)%>
+    <hr>
+  <% end %>
+<% end %>

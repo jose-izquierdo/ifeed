@@ -3,7 +3,7 @@
 # Table name: feeds
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)      not null
+#  title       :string(255)      not null
 #  category_id :integer
 #  description :string(255)
 #  url         :string(255)
@@ -16,13 +16,13 @@
 #
 
 class Feed < ActiveRecord::Base
-	has_many :users, through: :feed_users
-	has_many :feed_users
-	has_many :feed_items
-	belongs_to :category
-	validates :name, presence: true
+  has_many :users, through: :feed_users
+  has_many :feed_users
+  has_many :feed_items
+  belongs_to :category
+  validates :title, presence: true
 
-	scope :for_today, ->() {
-    	where(["DATE(start_at) <= DATE(?) AND DATE(?) <= DATE(end_at)", Date.today, Date.today])
- 	}
+  scope :by_category, ->(id) { where(category_id: id) }
+
+  delegate :name, to: :category, prefix: true
 end

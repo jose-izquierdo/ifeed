@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "iFeed" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -15,35 +15,6 @@
   <%= render partial: 'top_bar'%>
     <%= yield %>
     
-
-    <div class="sidebar large-3 columns left">
-            <ul class="side-nav">
-                
-                <h3> Choose a Category </h3>
-                <br>
-                
-                  <li><a href="#" class="button [radius round]">Technology</a></li>
-                  <li><a href="#" class="button [radius round]">Top News </a></li>
-                  <li><a href="#" class="button [radius round]">Sports</a></li>
-                  <li><a href="#" class="button [radius round]">Business</a></li>
-              
-            </ul>
-    </div>
-
-    <div class="large-9 columns right">
-      <div class = "right_side">            
-              <li>
-                <% @feeds.each do |feed| %>
-                    <%=truncate(feed.summary, :length => 140)%>
-                    <br>
-                    <%= feed.published_at%><br>
-                    <div class="links"> <%=link_to "Continue reading this article", feed.url %></a> </div>        
-                    <hr>
-                <%end%>   
-              </li>
-      </div>
-    </div>
-
     <%= javascript_include_tag "application" %>
   </body>
  

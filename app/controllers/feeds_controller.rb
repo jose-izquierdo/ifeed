@@ -1,44 +1,74 @@
 class FeedsController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_feed, only: [:show, :edit, :update, :destroy]
 
-	def index
-		@feeds = FeedItem.for_today
-	end
+  # GET /feeds
+  # GET /feeds.json
+  def index
+    @feeds = Feed.all
+  end
 
-	
+  # GET /feeds/1
+  # GET /feeds/1.json
+  def show
+  end
 
-	def create
-		
-=begin
-		#Creating tech feeds from NYT, LAT & 
-		tech_urls = %w[http://rss.nytimes.com/services/xml/rss/nyt/Technology.xml http://feeds.feedburner.com/latimes/technology http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk]
-		tech_feeds = Feedjira::Feed.fetch_and_parse tech_urls
+  # GET /feeds/new
+  def new
+    @feed = Feed.new
+  end
 
-		#Creating home page feeds from NYT, LAT & BBC
-		hp_urls = %w[http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml http://feeds.latimes.com/latimes/news http://feeds.bbci.co.uk/news/rss.xml?edition=uk]
-		hp_feeds = Feedjira::Feed.fetch_and_parse hp_urls
+  # GET /feeds/1/edit
+  def edit
+  end
 
-		#Creating sports feeds from ESPN, Yahoo Sports & Sport Illustrated
-		sport_urls = %w[http://sports.espn.go.com/espn/rss/news http://sports.yahoo.com/top/rss.xml http://rss.cnn.com/rss/si_topstories.rss]
-		sport_feeds = Feedjira::Feed.fetch_and_parse sport_urls
+  # POST /feeds
+  # POST /feeds.json
+  def create
+    @feed = Feed.new(feed_params)
 
-		#Creating business feed from Inc, WSJ & The Economist
-		business_urls = %w[http://feeds.inc.com/home/updates?format=xml http://online.wsj.com/xml/rss/3_7014.xml http://www.economist.com/feeds/print-sections/77/business.xml] 
-		business_feeds = Feedjira::Feed.fetch_an sport_urls
-=end
-	end
+    respond_to do |format|
+      if @feed.save
+        format.html { redirect_to @feed, notice: 'Feed was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @feed }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @feed.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-	def edit
-	end
+  # PATCH/PUT /feeds/1
+  # PATCH/PUT /feeds/1.json
+  def update
+    respond_to do |format|
+      if @feed.update(feed_params)
+        format.html { redirect_to @feed, notice: 'Feed was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @feed.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-	def show
-	end
+  # DELETE /feeds/1
+  # DELETE /feeds/1.json
+  def destroy
+    @feed.destroy
+    respond_to do |format|
+      format.html { redirect_to feeds_url }
+      format.json { head :no_content }
+    end
+  end
 
-	def update
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_feed
+      @feed = Feed.find(params[:id])
+    end
 
-
-	end
-
-	def delete
-	end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def feed_params
+      params.require(:feed).permit(:title, :description, :url)
+    end
 end

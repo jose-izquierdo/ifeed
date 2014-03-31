@@ -14,24 +14,23 @@ class FeedProcessor
 
 	def self.create_feed_items(feed, entries)
 
-		last_entry = feed.feed_items.order('published_at DESC').first
+		last_entry = feed.feed_items.order('published_at asc').first
 		entries.each do |entry|
 			if (last_entry.nil? || last_entry.published_at < entry[:published])
-				FeedItem.create(name: entry[:name], summary: entry[:summary], url: entry[:url], published_at: entry[:published])
+				feed.feed_items.create(title: entry[:title], summary: self.truncate(entry[:summary]), url: entry[:url], published_at: entry[:published])
 			else 
 			  break
 			end				
 		end
 
-		# Ver fecha ultimo elemento del feed item
-		# iterar sobre cada elemento de parse
-		# en cada elemento guardar si fecha mayor ultima guardada
-		# Borrar elementos antiguos
+		# TODO: Delete old items
 	end	
 
-	def self.update_feed_items(feed)
-		updated_feeds = Feedjira::Feed.update(feed.values)
-	end
+  private
+  def self.truncate(summary)
+    # TODO: Smarter truncation
+    Sanitize.clean(summary)
+  end
 
 
 end

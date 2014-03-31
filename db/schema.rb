@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140326164936) do
   end
 
   create_table "feeds", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "title",       null: false
     t.integer  "category_id"
     t.string   "description"
     t.string   "url"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20140326164936) do
   end
 
   create_table "feed_items", force: true do |t|
-    t.string   "name"
-    t.string   "summary",      limit: 1000
+    t.string   "title"
+    t.string   "summary"
     t.string   "url"
     t.date     "published_at"
     t.integer  "feed_id"
