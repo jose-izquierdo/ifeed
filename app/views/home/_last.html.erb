@@ -2,7 +2,7 @@
 
 <% @feed_items.each do |feed_item| %>
   <h3><%=link_to feed_item.title, feed_item.url, target: 'blank' %></h3>
-  <b><%= feed_item.feed_category_name %> - <%= feed_item.feed_title %></b> <%= feed_item.published_at%>
+  <b><%=link_to feed_item.feed_category_name, root_path(category_id: feed_item.feed.category_id) %> - <%= feed_item.feed_title %></b> <%= feed_item.published_at%>
   <br><br>
   <%=truncate(feed_item.summary, length: 140)%>
   <hr>
