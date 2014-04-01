@@ -23,14 +23,21 @@ class FeedProcessor
 			end				
 		end
 
-		# TODO: Delete old items
+		purge_old(feed)
 	end	
+
 
   private
   def self.truncate(summary)
     # TODO: Smarter truncation
-    Sanitize.clean(summary)
+    Sanitize.clean(summary).truncate(10000)
   end
 
-
+  def self.purge_old(feed)
+  	last_item = feed.feed_items.limit(1).offset(100).first
+  	if last_item.present?
+  		feed.feed_items.where(["published_at < ?", last_item.published_at]).destroy_all
+  	end
+  end
 end
+

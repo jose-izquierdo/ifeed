@@ -25,4 +25,8 @@ class Feed < ActiveRecord::Base
   scope :by_category, ->(id) { where(category_id: id) }
 
   delegate :name, to: :category, prefix: true
+
+  def to_param
+  	"#{id}-#{title.parameterize}"
+  end
 end

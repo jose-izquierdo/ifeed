@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<h1>
+
   <%= @feed.title %>
-</p>
+</h1>
 
 <p>
-  <strong>Description:</strong>
   <%= @feed.description %>
 </p>
 
-<p>
-  <strong>Url:</strong>
-  <%= @feed.url %>
-</p>
-
-
+<%@feed_items.each do |feed_item|%>
+  <h3><%=link_to feed_item.title, feed_item.url, target: 'blank' %></h3>
+  <b><%=link_to feed_item.feed_category_name, root_path(category_id: feed_item.feed.category_id) %> -</b> <%= feed_item.published_at%>
+  <br><br>
+  <%=truncate(feed_item.summary, length: 140)%>
+  <hr>
+<%end%>
 
 <%= link_to 'Edit', edit_feed_path(@feed) %> |
 <%= link_to 'Back', feeds_path %>

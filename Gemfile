@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use Postgresql as the database for Active Record
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -37,7 +37,10 @@ gem 'whenever', :require => false
 gem 'foundation-rails'
 gem "schema_plus"
 
-gem 'annotate', group: :development
+group :development do
+ gem 'annotate'
+ gem 'passenger'
+end
 
 group :development, :test do
 gem 'rspec-rails'

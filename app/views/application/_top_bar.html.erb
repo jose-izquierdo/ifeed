@@ -28,8 +28,10 @@
       </ul>
 
     <!-- Left Nav Section -->
+  <%if user_signed_in?%>
     <ul class="left">
       <li><%= link_to 'Feeds', feeds_path %></li>
     </ul>
+  <%end%>
   </section>
 </nav>

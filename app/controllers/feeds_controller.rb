@@ -10,6 +10,7 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    @feed_items = @feed.feed_items.limit(5)
   end
 
   # GET /feeds/new

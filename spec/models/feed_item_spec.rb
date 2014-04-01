@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  title        :string(255)
-#  summary      :string(255)
+#  summary      :string(10000)
 #  url          :string(255)
 #  published_at :date
 #  feed_id      :integer

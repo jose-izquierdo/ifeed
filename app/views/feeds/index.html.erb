@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
+      <th>Category</th>
       <th>Url</th>
+      <th>Items</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,8 +17,9 @@
     <% @feeds.each do |feed| %>
       <tr>
         <td><%= feed.title %></td>
-        <td><%= feed.description %></td>
+        <td><%= feed.category_name %></td>
         <td><%= feed.url %></td>
+        <td><%= feed.feed_items.count%></td>
         <td><%= link_to 'Show', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
         <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Feed', new_feed_path %>
+  <%= link_to 'New Feed', new_feed_path %>
