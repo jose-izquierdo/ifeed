@@ -34,7 +34,8 @@ end
 news_feeds = [
 	{title: 'NYTimes', url: 'http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml'},
 	{title: 'LATimes', url: 'http://feeds.latimes.com/latimes/news'},
-	{title: 'BBC', url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk'}
+	{title: 'BBC', url: 'http://feeds.bbci.co.uk/news/rss.xml?edition=uk'},
+	{title: 'El Mundo', url: 'http://estaticos.elmundo.es/rss/index.xml'}
 ]
 
 news_feeds.each do |feed|

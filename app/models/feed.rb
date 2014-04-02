@@ -18,7 +18,7 @@
 class Feed < ActiveRecord::Base
   has_many :users, through: :feed_users
   has_many :feed_users
-  has_many :feed_items
+  has_many :feed_items, dependent: :destroy
   belongs_to :category
   validates :title, presence: true
 
