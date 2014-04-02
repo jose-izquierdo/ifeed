@@ -38,6 +38,10 @@ gem 'foundation-rails'
 gem "schema_plus"
 
 group :development do
+  gem 'meta_request'
+end
+
+group :development do
  gem 'annotate'
  gem 'passenger'
 end
