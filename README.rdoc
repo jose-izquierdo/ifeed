@@ -1,3 +1,5 @@
+Rails app that provide users the chance to download his own feeds from the choosen feed provider.  
+
 == README
 
 This README would normally document whatever steps are necessary to get the
